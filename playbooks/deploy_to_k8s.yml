@@ -1,0 +1,20 @@
+# playbooks/deploy_to_k8s.yml
+- name: Deploy App to Kubernetes
+  hosts: k8s
+  become: yes
+  tasks:
+    - name: Copy deployment file
+      copy:
+        src: k8s-deploy/deployment.yaml
+        dest: /home/ubuntu/deployment.yaml
+
+    - name: Copy service file
+      copy:
+        src: k8s-deploy/service.yaml
+        dest: /home/ubuntu/service.yaml
+
+    - name: Apply Kubernetes manifests
+      shell: |
+        kubectl apply -f /home/ubuntu/deployment.yaml
+        kubectl apply -f /home/ubuntu/service.yaml
+

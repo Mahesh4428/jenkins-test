@@ -1,0 +1,17 @@
+# Terraform state
+*.tfstate
+*.tfstate.backup
+terraform.tfstate.d/
+.terraform/
+
+# Terraform plan output
+*.tfplan
+
+# Private keys
+*.pem
+
+# OS / editor junk
+*.swp
+*.swo
+.DS_Store
+
